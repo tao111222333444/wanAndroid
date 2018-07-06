@@ -1,0 +1,45 @@
+/**全局配置信息及第三方依赖统一管理*/
+ext{
+    android = [
+            compileSdkVersion       :28,
+            applicationId           :"com.hugo.wanandroid",
+            minSdkVersion           :17,
+            targetSdkVersion        :28,
+            versionCode             :1,
+            versionName             :"1.0",
+
+            androidSupportSdkVersion:"27.1.1"
+    ]
+
+    dependencies = [
+            "appcompat_v7"                   :  "com.android.support:appcompat-v7:${android["androidSupportSdkVersion"]}-alpha3",
+            "constraint-layout"              :  'com.android.support.constraint:constraint-layout:1.1.2',
+
+            //测试用的
+            "runner"                         : 'com.android.support.test:runner:1.0.2',
+            "espresso_core"                  : 'com.android.support.test.espresso:espresso-core:3.0.2',
+            "junit"                          :'junit:junit:4.12',
+
+            "design"                         :  "com.android.support:design:${android["androidSupportSdkVersion"]}",
+            "cardview-v7"                    :  "com.android.support:cardview-v7:${android["androidSupportSdkVersion"]}",
+            "recyclerview-v7"                :  "com.android.support:recyclerview-v7:${android["androidSupportSdkVersion"]}",
+
+            //方法数超过65535解决方法64K MultiDex分包方法
+            "multidex"                       : 'com.android.support:multidex:1.0.3',
+            //黄油刀
+            "butterknife_compiler"           : 'com.jakewharton:butterknife-compiler:8.8.1',
+            "butterknife"                    : 'com.jakewharton:butterknife:8.8.1',
+            //图片
+            "glide"                          : 'com.github.bumptech.glide:glide:4.6.1',
+
+            //SmartRefreshLayout 刷新控件
+            "smartRefreshLayout"             : 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-10',
+            "SmartRefreshHeader"             : 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-10',
+
+            //json解析框架
+            "gson"                           :'com.google.code.gson:gson:2.8.4',
+
+            //内存泄漏检测工具
+            "leakcanary"                     : 'com.squareup.leakcanary:leakcanary-android:1.5.4'
+    ]
+}
