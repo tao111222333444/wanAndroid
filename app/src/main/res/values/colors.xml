@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#303F9F</color>
+
+    <color name="white">#ffffff</color>
+
+    <color name="main_nav_color_true">#3F51B5</color>
+    <color name="main_nav_color_false">#c2c2c2</color>
+
+    <color name="main_nav_bg_start">#3fc75f</color>
+    <color name="main_nav_bg_center">#e7c054</color>
+    <color name="main_nav_bg_end">#35B0FF</color>
+
+
+    <color name="b1">#333333</color>        //【文字 黑色】- 标题，重要信息文字
+    <color name="b2">#666666</color>        //【文字 中灰】- 正文，默认状态文字
+    <color name="b3">#999999</color>        //【文字 灰色】- 提示性文字，次要信息文字
+    <color name="b4">#afb0b0</color>        //【失效，不可点击状态】
+    <color name="b5">#dedede</color>        //【分割线】 - 1px分割线，
+    <color name="b6">#f0f0f0</color>        //【背景 浅灰】 - 底层，无内容背景，搜索条，对话框，二级底部栏
+    <color name="b7">#ffffff</color>        //【背景 纯白】 - 内页背景，顶部底部栏
+
+
+</resources>
