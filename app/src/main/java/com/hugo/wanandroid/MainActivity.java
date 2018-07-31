@@ -2,11 +2,13 @@ package com.hugo.wanandroid;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.FrameLayout;
 
 import com.hugo.wanandroid.base.BaseActivity;
 import com.hugo.wanandroid.ui.WebActivity;
@@ -17,7 +19,8 @@ import butterknife.BindView;
 /**
  * @author 主页面
  */
-public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener,
+         BottomNavigationView.OnNavigationItemSelectedListener {
 
 
     @BindView(R.id.drawer_layout)
@@ -29,6 +32,19 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
      */
     @BindView(R.id.nav_view)
     NavigationView navigationView;
+    /**
+     * 底部选项栏
+     */
+    @BindView(R.id.bottom_navigation)
+    BottomNavigationView bottomNavigation;
+    /**
+     * fragment 容器
+     */
+    @BindView(R.id.container)
+    FrameLayout container;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,8 +69,8 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+        bottomNavigation.setOnNavigationItemSelectedListener(this);
     }
-
 
 
 
@@ -67,15 +83,31 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 break;
             case R.id.nav_item_about_we:
                 //关于我们
-
+                ToastUtil.showToast("关于我们");
                 break;
             case R.id.nav_item_exit:
                 //退出
-
+                ToastUtil.showToast("退出");
+                break;
+            case R.id.tab_home:
+                //首页
+                ToastUtil.showToast("首页");
+                break;
+            case R.id.tab_goods:
+                //知识体系
+                ToastUtil.showToast("知识体系");
+                break;
+            case R.id.tab_cart:
+                //导航
+                ToastUtil.showToast("导航");
+                break;
+            case R.id.tab_self:
+                //项目
+                ToastUtil.showToast("项目");
                 break;
                 default:
         }
-        return false;
+        return true;
     }
 
 
@@ -87,7 +119,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
             exitTime = System.currentTimeMillis();
 
         } else {
-            App.getAppContext().getActivityControl().appExit();
+            App.getInstance().getActivityControl().appExit();
         }
     }
 }

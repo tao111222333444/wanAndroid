@@ -45,7 +45,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         initView();
         mActivity = this;
         //加入activity管理
-        App.getAppContext().getActivityControl().addActivity(this);
+        App.getInstance().getActivityControl().addActivity(this);
     }
 
     @Override
@@ -58,7 +58,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
 
         //移除类
-        App.getAppContext().getActivityControl().removeActivity(this);
+        App.getInstance().getActivityControl().removeActivity(this);
     }
 
 

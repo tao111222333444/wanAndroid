@@ -2,9 +2,11 @@ package com.hugo.wanandroid;
 
 import android.app.Application;
 import android.content.Context;
+import android.os.Handler;
 
 import com.hugo.wanandroid.utils.ActivityControl;
 import com.hugo.wanandroid.utils.SdkManager;
+import com.hugo.wanandroid.utils.ToastUtil;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshFooterCreator;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshHeaderCreator;
@@ -37,14 +39,17 @@ public class App extends Application{
         if(BuildConfig.DEBUG){
             //初始化内存泄漏检测工具
             SdkManager.initLeakCanary(this);
+            //初始化 facebook stetho 调试工具
+            SdkManager.initFacebookStetho(this);
         }
+        ToastUtil.initToast(new Handler(getMainLooper()),this);
     }
 
     /**
      * 获取Application
      * @return
      */
-    public static App getAppContext(){
+    public synchronized static App getInstance(){
         return mBaseApplication;
     }
     /**
@@ -59,6 +64,7 @@ public class App extends Application{
     @Override
     public void onTerminate() {
         super.onTerminate();
+        ToastUtil.clear();
         mActivityControl.appExit();
     }
 

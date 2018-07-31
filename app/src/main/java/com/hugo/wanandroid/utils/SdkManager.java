@@ -2,6 +2,7 @@ package com.hugo.wanandroid.utils;
 
 import android.app.Application;
 
+import com.facebook.stetho.Stetho;
 import com.squareup.leakcanary.LeakCanary;
 
 /**
@@ -19,5 +20,10 @@ public class SdkManager {
             return;
         }
         LeakCanary.install(app);
+    }
+
+
+    public static void initFacebookStetho(Application app){
+        Stetho.initializeWithDefaults(app);
     }
 }
