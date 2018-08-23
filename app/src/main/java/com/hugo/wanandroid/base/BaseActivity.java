@@ -12,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 
 import com.hugo.wanandroid.App;
 import com.hugo.wanandroid.R;
+import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,7 +24,7 @@ import butterknife.Unbinder;
  * @author 29794
  */
 @SuppressLint("Registered")
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity<T extends BaseContract.BasePresenter> extends RxAppCompatActivity implements BaseContract.BaseView{
 
 
     /***
@@ -31,7 +32,9 @@ public abstract class BaseActivity extends AppCompatActivity {
      */
     private Unbinder unBinder;
 
-    private BaseActivity mActivity;
+    protected BaseActivity mActivity;
+
+    protected T mPresenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,6 +47,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         initTitle();
         initView();
         mActivity = this;
+
+        attachView();
         //加入activity管理
         App.getInstance().getActivityControl().addActivity(this);
     }
@@ -57,11 +62,29 @@ public abstract class BaseActivity extends AppCompatActivity {
             unBinder = null;
         }
 
+        detachView();
+
         //移除类
         App.getInstance().getActivityControl().removeActivity(this);
     }
 
+    /**
+     * 添加view
+     */
+    private void attachView(){
+        if(mPresenter !=null){
+            mPresenter.attachView(this);
+        }
+    }
 
+    /**
+     * 分离View
+     */
+    private void detachView(){
+        if(mPresenter !=null){
+            mPresenter.detachView();
+        }
+    }
 
 
     /**

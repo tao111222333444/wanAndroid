@@ -2,6 +2,8 @@ package com.hugo.wanandroid.base;
 
 import android.support.annotation.UiThread;
 
+import io.reactivex.ObservableTransformer;
+
 /**
  * @author 作者：hugo
  * @date 时间：2018/6/19.
@@ -37,6 +39,12 @@ public interface BaseContract {
          * 显示请求错误提示
          */
         void showError(String msg);
+
+        /**
+         * 返回Lifecycle 用于处理RxJava的生命周期的
+         * @return ObservableTransformer
+         */
+        <T> ObservableTransformer<T, T> bindToLifecycle();
     }
 
     /**
