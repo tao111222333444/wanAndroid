@@ -18,6 +18,7 @@ import android.webkit.WebViewClient;
 import com.hugo.wanandroid.R;
 import com.hugo.wanandroid.base.BaseActivity;
 import com.hugo.wanandroid.base.BaseContract;
+import com.hugo.wanandroid.utils.AndroidBug5497Workaround;
 import com.hugo.wanandroid.utils.LogUtil;
 
 import butterknife.BindView;
@@ -61,6 +62,7 @@ public class WebActivity extends BaseActivity implements BaseContract.BaseView{
         url = getIntent().getStringExtra(INPUT_URL);
         initWebClient();
         webView.loadUrl(url);
+        AndroidBug5497Workaround.assistActivity(this);
     }
 
     @SuppressLint("SetJavaScriptEnabled")

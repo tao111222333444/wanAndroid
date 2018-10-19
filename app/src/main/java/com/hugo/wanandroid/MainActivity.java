@@ -1,6 +1,8 @@
 package com.hugo.wanandroid;
 
 import android.os.Bundle;
+import android.os.Process;
+import android.os.RemoteException;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
@@ -10,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
+import com.hugo.wanandroid.aidl.IMyAidlInterface;
 import com.hugo.wanandroid.base.BaseActivity;
 import com.hugo.wanandroid.ui.WebActivity;
 import com.hugo.wanandroid.utils.ToastUtil;
@@ -43,6 +46,19 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     @BindView(R.id.container)
     FrameLayout container;
 
+
+    private final IMyAidlInterface.Stub mBinder = new IMyAidlInterface.Stub() {
+        @Override
+        public void basicTypes(int anInt, long aLong, boolean aBoolean, float aFloat, double aDouble, String aString) throws RemoteException {
+
+        }
+
+        @Override
+        public int getPid() throws RemoteException {
+            return Process.myPid();
+        }
+
+    };
 
 
     @Override
@@ -121,5 +137,25 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         } else {
             App.getInstance().getActivityControl().appExit();
         }
+    }
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
+    }
+
+    @Override
+    public void showToast(String msg) {
+
+    }
+
+    @Override
+    public void showError(String msg) {
+
     }
 }

@@ -47,7 +47,9 @@
             </intent-filter>
         </activity-alias>
         <activity android:name=".MainActivity"/>
-        <activity android:name=".ui.WebActivity"/>
+        <activity android:name=".ui.WebActivity"
+            android:windowSoftInputMode="adjustResize"
+            />
     </application>
 
 </manifest>

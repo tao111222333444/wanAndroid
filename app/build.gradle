@@ -58,6 +58,23 @@ dependencies {
     //黄油刀
     implementation rootProject.ext.dependencies["butterknife"]
     annotationProcessor rootProject.ext.dependencies["butterknife_compiler"]
+
+    //网络请求框架  retrofit2
+    implementation rootProject.ext.dependencies["retrofit2"]
+    implementation rootProject.ext.dependencies["retrofit2_Gosn"]
+    implementation rootProject.ext.dependencies["retrofit2_RxJava"]
+    //RxJava
+    implementation rootProject.ext.dependencies["rxjava"]
+    implementation rootProject.ext.dependencies["rxandroid"]
+    //rxlifecycle
+    implementation rootProject.ext.dependencies["rxlifecycle"]
+    implementation rootProject.ext.dependencies["rxlifecycle_android"]
+    implementation rootProject.ext.dependencies["rxlifecycle_components"]
+
+    //okhttp
+    debugImplementation rootProject.ext.dependencies["okHttp3_log"]
+    implementation rootProject.ext.dependencies["okHttp3"]
+
     //图片加载
     implementation rootProject.ext.dependencies["glide"]
     //下拉刷新
@@ -67,4 +84,10 @@ dependencies {
     implementation rootProject.ext.dependencies["gson"]
     //内存泄漏检测工具
     debugImplementation rootProject.ext.dependencies["leakcanary"]
+
+    //facebook stetho开源的调试工具
+    debugImplementation rootProject.ext.dependencies["facebook_stetho"]
+    debugImplementation rootProject.ext.dependencies["facebook_stetho_OkHttp"]
+
+    implementation 'org.greenrobot:eventbus:3.1.1'
 }
