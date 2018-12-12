@@ -86,7 +86,15 @@ public class HttpManager {
      * @param clz
      * @param <T>
      */
-    public <T> void addServise(Class<T> clz){mRetrofitServiceHashMap.put(clz,mApiRetrofit);}
+    public <T> void addServise(Class<T> clz){addServise(clz,mApiRetrofit);}
+
+    /**
+     * 设置api服务   可以自定义一个retrofit
+     * @param clz
+     * @param retrofit
+     * @param <T>
+     */
+    public <T> void addServise(Class<T> clz,Retrofit retrofit){mRetrofitServiceHashMap.put(clz,retrofit);}
 
     /**
      * 获取 Retrofit API 服务  如果没有调用 @addServise 添加api服务 是有可能返回null的
@@ -100,6 +108,10 @@ public class HttpManager {
             return Utils.cast(object);
         } else {
           Retrofit retrofit =   mRetrofitServiceHashMap.get(clz);
+            if(retrofit == null ){
+                addServise(clz);
+            }
+            retrofit =   mRetrofitServiceHashMap.get(clz);
           if(retrofit != null ){
               T service = retrofit.create(clz);
               cachedApis.put(clz,service);
