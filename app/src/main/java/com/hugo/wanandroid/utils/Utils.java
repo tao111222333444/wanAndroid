@@ -37,8 +37,8 @@ public class Utils {
     /**
      * 获取当前应用的进程名字
      *
-     * @param cxt
-     * @param pid
+     * @param cxt Context
+     * @param pid android.os.Process.myPid()
      * @return
      */
     public static String getProcessName(Context cxt, int pid) {
